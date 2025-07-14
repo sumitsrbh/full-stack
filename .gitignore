@@ -1,0 +1,15 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+
+# OS & editor files
+.DS_Store
+.idea/
+.vscode/
+
