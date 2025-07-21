@@ -19,3 +19,30 @@ const mary = { name: 'Mary', age: 21, phone: '123-45678' };
 printName(john);
 printName(mary);
 
+
+//OOP interface
+// An interface is a contract. In this contract, we can define what behavior the classes or interfaces that will implement this contract should have.
+// ECMAScript is an interface for the JavaScript language. It tells the JavaScript language what functionalities it should have, but each browser might have a different implementation of it.
+
+interface Comparable {
+  compareTo(b): number;
+}
+class MyObject implements Comparable {
+  age: number;
+ 
+  constructor(age: number) {
+    this.age = age;
+  }
+  compareTo(b): number {
+    if (this.age === b.age) {
+      return 0;
+    }
+    return this.age > b.age ? 1 : -1;
+  }
+}
+
+// To demonstrate the concept of polymorphism, we can use the code below:
+function compareTwoObjects(a: Comparable, b: Comparable) {
+  console.log(a.compareTo(b));
+  console.log(b.compareTo(a));
+}
