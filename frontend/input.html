@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Enter values in the search field</h2>
+    <div>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Enter movie title"
+        value=""
+      />
+    </div>
+    <div id="results"></div>
+
+    <script>
+      // OMDB API - Free alternative to IMDB
+      const OMDB_API_KEY = 'af928719' // Get free key from omdbapi.com
+      const OMDB_BASE_URL = 'http://www.omdbapi.com/'
+      let debounceTimer
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        const searchTerm = e.target.value
+
+        clearTimeout(debounceTimer)
+
+        // Set new timer
+        debounceTimer = setTimeout(() => {
+          if (searchTerm.trim().length >= 2) {
+            searchMovie(searchTerm)
+          } else {
+            document.getElementById('results').innerHTML = ''
+          }
+        }, 500)
+      })
+
+      async function searchMovie(searchTerm) {
+        try {
+          document.getElementById('results').innerHTML =
+            '<p>searching .....</p>'
+          let response = await fetch(
+            `${OMDB_BASE_URL}?apikey=${OMDB_API_KEY}&s=${searchTerm}`
+          )
+          const data = await response.json()
+          if (data.Response === 'True') {
+            displayResults(data.Search)
+          } else {
+            document.getElementById('results').innerHTML =
+              '<p>No results found</p>'
+          }
+        } catch (error) {
+          console.error('Error occured', error)
+          document.getElementById('results').innerHTML = '<p>Error occured</p>'
+        }
+      }
+      function displayResults(movies) {
+        const resultsDiv = document.getElementById('results')
+        let html = '<h3>Results:</h3>'
+
+        movies.forEach((movie) => {
+          html += `
+            <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+              <h4>${movie.Title} (${movie.Year})</h4>
+              <p>IMDB ID: ${movie.imdbID}</p>
+              <p>Type: ${movie.Type}</p>
+              ${
+                movie.Poster !== 'N/A'
+                  ? `<img src="${movie.Poster}" alt="${movie.Title}" style="max-width: 100px;">`
+                  : ''
+              }
+            </div>
+          `
+        })
+
+        resultsDiv.innerHTML = html
+      }
+    </script>
+  </body>
+</html>

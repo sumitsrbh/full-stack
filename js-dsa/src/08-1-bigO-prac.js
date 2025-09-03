@@ -1,6 +1,13 @@
 //  *Determine time and space complexity
 
 const oddOrEven = (array) => (array.length % 2 === 0 ? 'even' : 'odd') // * O(1)
+let t1_oddOrEven = performance.now()
+const arry = Array.from({ length: 1000 }, () =>
+  Math.floor(Math.random() * 100000)
+)
+// oddOrEven(arry)
+let t2_oddOrEven = performance.now()
+console.log(`Time Elapsed: ${(t2_oddOrEven - t1_oddOrEven) / 1000} seconds `)
 
 function calculateAverage(array) {
   let sum = 0
@@ -10,6 +17,9 @@ function calculateAverage(array) {
   }
   return sum / array.length
 }
+const t1_calculateAvg = performance.now()
+calculateAverage(arry)
+const t2_calculateAvg = performance.now()
 
 function hasCommonElements(array1, array2) {
   for (let i = 0; i < array1.length; i++) {

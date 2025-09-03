@@ -1,0 +1,65 @@
+let array = [1, 2, 5, 6]
+
+// delete- returns deleted element
+console.log('After deletion', array.splice(2, 2))
+
+array.splice(2, 0, 3, 4, 5, 6)
+console.log('After insertion', array)
+
+console.log('After slice', array.slice(3, 6))
+
+console.log(array.concat([4, 5, 6], 7, 8, 9))
+
+// loop
+array.forEach((item, index, array) => {
+  console.log(`item: ${item}, index ${index}, array ${array}`)
+})
+
+let arrayLike = {
+  0: 'Something',
+  1: 'else',
+  [Symbol.isConcatSpreadable]: true,
+  length: 2, //* this property must be included.
+}
+console.log('concating object into array')
+
+console.log('concat', array.concat(arrayLike))
+
+//searching
+console.log(
+  'includes seven :',
+  array.includes(5),
+  'position',
+  array.indexOf(1),
+  array.lastIndexOf(1)
+)
+
+let users = [
+  { name: 'dummy', age: 34 },
+  { name: 'lolo', age: 56 },
+  { name: 'dumka', age: 59 },
+  { name: 'chand', age: 3 },
+  { name: 'raunak', age: 13 },
+]
+let new_users = console.log(
+  users.find((user) => user.age > 18),
+  'Index',
+  users.findIndex((user) => user.age > 18)
+) // first matching user returned and then iteration stops
+
+// return the whole matching array
+console.log(users.filter((user) => user.age > 18))
+
+function sum(num) {
+  return num * 2
+}
+function names(input) {
+  return input.age > 18 ? input.name : null
+}
+console.log(array.map((item) => sum(item)))
+console.log(users.map((user) => names(user)))
+
+let strg = 'camel-case'
+let strgArray = strg.split('-')
+console.log(strgArray)
+console.log(strgArray.join('-'))

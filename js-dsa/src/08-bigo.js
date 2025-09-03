@@ -23,7 +23,7 @@ function secondsInDays(numberOfDays) {
 // Let's say your first guess is 30. If it is too high, you now know the number is somewhere between 1 and 29. You have effectively halved the search space! Next, you guess 10 (too low), narrowing the range further to 11 through 29. Your third guess, 20, happens to be correct!
 
 // *O(n):Linear time
-// runtime grow proportionally and linearly with input size(n) i.e double the input, twice the runtime .
+// runtime grow proportionals lly and linearly with input size(n) i.e double the input, twice the runtime .
 function calculateTotalExpenses(monthlyExpenses) {
   let total = 0
   for (let i = 0; i < monthlyExpenses.length; i++) {

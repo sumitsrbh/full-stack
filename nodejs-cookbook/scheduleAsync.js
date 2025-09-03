@@ -1,0 +1,5 @@
+console.log('Start ')
+setTimeout(() => console.log('setTimeOut (after delay)'), 0)
+setImmediate(() => console.log('SetImmediate'))
+process.nextTick(() => console.log('process.nextTick'))
+console.log('End')
