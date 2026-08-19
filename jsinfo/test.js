@@ -1,2 +1,1 @@
-let num = [1, 2, 3, 4, 6]
-console.log(num.reverse())
+cd 

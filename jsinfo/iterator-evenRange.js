@@ -1,5 +1,5 @@
 function EvenRange(from, to) {
-  ;(this.from = from), (this.to = to)
+  ;((this.from = from), (this.to = to))
 }
 
 let evenRAnge = new EvenRange(0, 20)
