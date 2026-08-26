@@ -1,0 +1,14 @@
+{
+  "name": "async-callback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "asysnc-zalgo.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node asysnc-zalgo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
