@@ -8,8 +8,16 @@ const router = {
       method: 'GET',
     })
   },
+  post: () => {},
+  register: (method, path, handler) => {
+    routes.push({
+      method,
+      path,
+      handler,
+    })
+  },
 
-  handle: (req, res) => {
+  matchRoute: (req, res) => {
     let route = null
     req.params = {}
     const urlArry = req.url.split('/').filter(Boolean)
@@ -44,3 +52,5 @@ const router = {
 }
 
 export default router
+
+

@@ -1,0 +1,4 @@
+welcome to the application
+hello from file B
+this file contains hello twice: hello
+goodbye
